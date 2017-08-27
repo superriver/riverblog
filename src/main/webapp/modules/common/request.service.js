@@ -1,0 +1,13 @@
+/**
+ * Created by Administrator on 2017-8-26.
+ */
+
+app.service("RequestService",function ($http,$q) {
+        this.getRequest=function (url,paramType) {
+            var deferred =$q.defer();
+            $http.get(web_project_name+url,paramType).success(function (data) {
+                deferred.resolve(data);
+            });
+            return deferred.promise();
+        }
+})

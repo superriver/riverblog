@@ -18,7 +18,7 @@
 	<!-- 目前只加载database.properties, log4j.properties -->
 	<context:property-placeholder location="classpath*:*.properties" />
 
-	<context:component-scan base-package="studio.baxia">
+	<context:component-scan base-package="studio.river">
 		<!-- 将Controller的注解排除掉，在spring-mvc.xml单独扫描Controller注解 -->
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
@@ -40,13 +40,13 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations">
             <list>
-                <value>classpath*:config/mybatis/**/*SqlMap.xml</value>
+                <value>classpath*:config/mybatis/**/*Mapper.xml</value>
             </list>
         </property>
     </bean>
     <!-- 该方式用来注入dao或者mapper接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="studio.baxia.fo.dao" />
+        <property name="basePackage" value="studio.river.dao" />
     </bean>
     <!-- 该方式用来注入dao 实现类 -->
    <!-- <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
