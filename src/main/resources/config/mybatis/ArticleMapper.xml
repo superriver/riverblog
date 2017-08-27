@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="studio.river.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="studio.river.pojo.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="category_ids" property="categoryIds" jdbcType="VARCHAR" />
+    <result column="tag_ids" property="tagIds" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="write_time" property="writeTime" jdbcType="TIMESTAMP" />
+    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+    <result column="hits" property="hits" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="studio.river.pojo.Article" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+<select id="selectBy" resultMap="BaseResultMap">
+  SELECT  * from t_article ORDER BY pub_time DESC LIMIT 3;
+</select>
+
+  <sql id="Base_Column_List" >
+    id, title, summary, category_ids, tag_ids, status, write_time, pub_time, hits, code
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="studio.river.pojo.Article" >
+    insert into t_article (id, title, summary, 
+      category_ids, tag_ids, status, 
+      write_time, pub_time, hits, 
+      code, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{categoryIds,jdbcType=VARCHAR}, #{tagIds,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{writeTime,jdbcType=TIMESTAMP}, #{pubTime,jdbcType=TIMESTAMP}, #{hits,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="studio.river.pojo.Article" >
+    insert into t_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="categoryIds != null" >
+        category_ids,
+      </if>
+      <if test="tagIds != null" >
+        tag_ids,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="writeTime != null" >
+        write_time,
+      </if>
+      <if test="pubTime != null" >
+        pub_time,
+      </if>
+      <if test="hits != null" >
+        hits,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIds != null" >
+        #{categoryIds,jdbcType=VARCHAR},
+      </if>
+      <if test="tagIds != null" >
+        #{tagIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="writeTime != null" >
+        #{writeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubTime != null" >
+        #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hits != null" >
+        #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="studio.river.pojo.Article" >
+    update t_article
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIds != null" >
+        category_ids = #{categoryIds,jdbcType=VARCHAR},
+      </if>
+      <if test="tagIds != null" >
+        tag_ids = #{tagIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="writeTime != null" >
+        write_time = #{writeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pubTime != null" >
+        pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hits != null" >
+        hits = #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="studio.river.pojo.Article" >
+    update t_article
+    set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      category_ids = #{categoryIds,jdbcType=VARCHAR},
+      tag_ids = #{tagIds,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      write_time = #{writeTime,jdbcType=TIMESTAMP},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      hits = #{hits,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="studio.river.pojo.Article" >
+    update t_article
+    set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      category_ids = #{categoryIds,jdbcType=VARCHAR},
+      tag_ids = #{tagIds,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      write_time = #{writeTime,jdbcType=TIMESTAMP},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      hits = #{hits,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
