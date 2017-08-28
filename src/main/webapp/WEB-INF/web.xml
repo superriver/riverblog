@@ -73,29 +73,29 @@
   </servlet-mapping>
 
 
-  <!-- 跨域问题解决过滤器 -->
-  <filter>
-    <filter-name>corsFilter</filter-name>
-    <filter-class>studio.baxia.fo.filter.CorsFilter</filter-class>
-    <init-param>
-      <param-name>allowOrigin</param-name>
-      <param-value>*</param-value>
-    </init-param>
-    <init-param>
-      <param-name>allowMethods</param-name>
-      <param-value>GET,POST,PUT,DELETE</param-value>
-    </init-param>
-    <init-param>
-      <param-name>allowCredentials</param-name>
-      <param-value>true</param-value>
-    </init-param>
-    <init-param>
-      <param-name>allowHeaders</param-name>
-      <param-value>X-Requested-With,Content-Type</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>corsFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!--&lt;!&ndash; 跨域问题解决过滤器 &ndash;&gt;-->
+  <!--<filter>-->
+    <!--<filter-name>corsFilter</filter-name>-->
+    <!--<filter-class>studio.baxia.fo.filter.CorsFilter</filter-class>-->
+    <!--<init-param>-->
+      <!--<param-name>allowOrigin</param-name>-->
+      <!--<param-value>*</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+      <!--<param-name>allowMethods</param-name>-->
+      <!--<param-value>GET,POST,PUT,DELETE</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+      <!--<param-name>allowCredentials</param-name>-->
+      <!--<param-value>true</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+      <!--<param-name>allowHeaders</param-name>-->
+      <!--<param-value>X-Requested-With,Content-Type</param-value>-->
+    <!--</init-param>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>corsFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
 </web-app>

@@ -2,7 +2,7 @@
  * Created by phn on 2016/2/2.
  */
 
-var app = angular.module("webApp", [  "ngRoute",
+var app = angular.module("webApp", ["ngRoute",
 		'ui.bootstrap', "ngSanitize", "ui.router", "ngFileUpload" ]);
 
 
