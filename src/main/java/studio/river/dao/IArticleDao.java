@@ -16,6 +16,7 @@ public interface IArticleDao {
      */
 
     List<Article> selectBy();
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Article record);

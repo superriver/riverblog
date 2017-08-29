@@ -3,9 +3,11 @@
  */
 
 var app = angular.module("webApp", ["ngRoute",
-		'ui.bootstrap', "ngSanitize", "ui.router", "ngFileUpload" ]);
+		"ui.bootstrap", "ngSanitize", "ui.router", "ngFileUpload" ]);
 
-
+// app.config(function($httpProvider) {
+//     $httpProvider.interceptors.push('HttpInterceptor');
+// });
 app.config(function($routeProvider,$locationProvider){
 	$routeProvider.when("/",
 			{
