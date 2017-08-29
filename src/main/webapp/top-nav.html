@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <title>顶部导航栏</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
- </head>
+	<script src="plugins/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
  	<nav class="navbar navbar-inverse" role = "navigation">
- 	 <div class="container-fluid">
- 		<ul class="nav navbar-nav">
- 			<li class="active"><a href="">首页</a></li>
+ 	 <div class="container-fluid top-nav">
+ 		<ul class="nav navbar-nav nav-custom ">
+ 			<li class="active"><a href="#!/">首页</a></li>
  			<li class="dropdown">
- 				<a href="" class="dropdown-toggle" data-toggle="dropdown">博客<b class="caret"></b></a>
+ 				<a href="#!/blog" class="dropdown-toggle" data-toggle="dropdown">博客<b class="caret"></b></a>
  				<ul class="dropdown-menu">
- 					<li>归档</li>
- 					<li>分类</li>
+ 					<li><a>归档</a>/li>
+ 					<li><a>分类</a></li>
  				</ul>
  			</li>
- 			<li><a href="">项目</a></li>
- 			<li><a href="">友情链接</a></li>
- 			<li><a href="">关于我</a></li>
+ 			<li><a href="#!/project">项目</a></li>
+ 			<li><a href="#!/friendlink">友情链接</a></li>
+ 			<li><a href="#!/about">关于我</a></li>
  		</ul>
  	 </div>
  	</nav>
- <body>
+ 	<script type="text/javascript">
+		$("li").click(function () {
+			$(this).addClass("active").siblings().removeClass("active");
+        })
+	</script>
  </body>
  </html>
