@@ -3,7 +3,6 @@
  */
 app.controller("IndexController",function (IndexService,$scope) {
     var getlist=function () {
-        console.log("IndexController--");
         IndexService.list().then(function (data) {
             console.log("IndexController"+data);
             $scope.datas=data.resultData;
