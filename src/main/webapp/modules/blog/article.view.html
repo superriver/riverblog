@@ -1,0 +1,18 @@
+
+<div class="customContainer">
+
+    <div class="blog-body">
+        <!--加载进度条 -->
+        <ng-include></ng-include>
+        <div class="blog-content">
+            <!-- 显示错误信息-->
+            <div ng-if="error" ng-show="false">{{errorMessage}}</div>
+            <div ng-if="!error" ng-init="articles=[
+    {title:'agaag',summary:'aoaigajg',pubTime:'12222',hits:200,countMessages:'gsg'}]">
+                <div class="card" ng-repeat="article in articles">
+                    <ng-include src="'modules/blog/show-content-view.html'"></ng-include>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

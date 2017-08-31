@@ -1,44 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../plugins/jquery/jquery-1.11.3.min.js"></script>
-    <script src="../../plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="../../plugins/angularjs/angular.min.js"></script>
-</head>
-<body>
-<div class="customContainer" ng-app="">
-
-    <div class="blog-body">
-        <!--加载进度条 -->
-        <ng-include></ng-include>
-        <div class="blog-content">
-            <!-- 显示错误信息-->
-            <div ng-if="error" ng-show="false">{{errorMessage}}</div>
-            <div ng-if="!error"  ng-init="articles=[
-    {title:'agaag',summary:'aoaigajg',pubTime:'12222',hits:200,countMessages:'gsg'}]">
-                <div class="card" ng-repeat="article in articles">
-                    <h3 style="font-size: 20px;text-indent: 28px">
-                        <a style="color:#000" href="" title="">{{article.title}}</a>
-                    </h3>
-                    <p style="color:#666666;text-indent: 30px">{{article.summary}}</p>
-                    <p style="font-size: 12px;padding-top: 5px;text-align:right ">
-                        <a href="">阅读全文<span
-                            class="glyphicon glyphicon-chevron-right"></span></a>
-                    </p>
-                    <p style="text-align: right;color:#999999;margrin-top:10px;margin-bottom: 0;font-size: 13px;">
-                        <span><span class="glyphicon glyphicon-time" style="padding: 0px;margin-right: 2px;"></span>{{article.pubTime | date :'yyyy-MM-dd HH:ss'}}</span>
-                        <span style="padding-left: 5px"><span class="glyphicon glyphicon-eye-open"
-                                                              style="padding: 0px;margin-right: 2px;"></span>阅读({{article.hits}})</span>
-                        <span style="padding-left: 5px"><span class="glyphicon glyphicon-comment"
-                                                              style="padding: 0px;"></span>评论({{article.countMessages}})</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+    <h3 style="font-size: 20px;text-indent: 28px">
+        <a style="color:#000" href="" title="">{{article.title}}</a>
+    </h3>
+    <p style="color:#666666;text-indent: 30px">{{article.summary}}</p>
+    <p style="font-size: 12px;padding-top: 5px;text-align:right ">
+        <a href="">阅读全文<span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+    </p>
+    <p style="text-align: right;color:#999999;margrin-top:10px;margin-bottom: 0;font-size: 13px;">
+        <span><span class="glyphicon glyphicon-time" style="padding: 0px;margin-right: 2px;"></span>{{article.pubTime | date :'yyyy-MM-dd HH:ss'}}</span>
+        <span style="padding-left: 5px"><span class="glyphicon glyphicon-eye-open"
+                                              style="padding: 0px;margin-right: 2px;"></span>阅读({{article.hits}})</span>
+        <span style="padding-left: 5px"><span class="glyphicon glyphicon-comment"
+                                              style="padding: 0px;"></span>评论({{article.countMessages}})</span>
+    </p>
 </div>
-</body>
-</html>
+
