@@ -11,6 +11,7 @@ var app = angular.module("webApp", ["ngRoute",
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider.when("/",
         {
+
             templateUrl: "modules/index/index.view.html",
             controller: 'IndexController'
         }
