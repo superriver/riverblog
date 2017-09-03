@@ -7,14 +7,18 @@
 	margin: 0 5px;">
             <!-- 显示错误信息-->
             <div ng-if="error" ng-show="false">{{errorMessage}}</div>
-            <div ng-if="!error" ng-init="articles=[
-    {title:'agaag',summary:'aoaigajg',pubTime:'12222',hits:200,countMessages:'gsg'},
-    {title:'agaag',summary:'aoaigajg',pubTime:'12222',hits:200,countMessages:'gsg'}]">
+            <div ng-if="!error">
                 <div class="card" style="
     padding: 5px 20px 6px 20px;
     background-color: #fff;
     margin:0px 0px 15px 0px;" ng-repeat="article in articles">
                     <ng-include src="'modules/blog/show-content-view.html'"></ng-include>
+                </div>
+                <div style="text-align: center" ng-if="articles">
+
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize" max-size="5"
+                    first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页"
+                    boundary-link="true" boundary-link-numbers="true"></uib-pagination>
                 </div>
             </div>
         </div>

@@ -15,7 +15,9 @@ public interface IArticleDao {
      * @return
      */
 
-    List<Article> selectBy();
+    List<Article> selectRecent();
+
+    List<Article> selectAll();
 
     int deleteByPrimaryKey(Integer id);
 

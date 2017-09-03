@@ -27,8 +27,16 @@ public class ArticleController {
     @RequestMapping(value = "/recent",method = RequestMethod.GET)
     public CommonResult<Article> list(){
         System.out.println("1----->");
-        List<Article> list = articleService.getByAll();
+        List<Article> list = articleService.getRecent();
         System.out.println("2----->"+list.size());
+        return new CommonResult<Article>(Constant.SUCCESS_CODE,null,list);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/blog",method = RequestMethod.GET)
+    public CommonResult<Article> getAll(){
+        List<Article> list = articleService.getByAll();
+
         return new CommonResult<Article>(Constant.SUCCESS_CODE,null,list);
     }
 

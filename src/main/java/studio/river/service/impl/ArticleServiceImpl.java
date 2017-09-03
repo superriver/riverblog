@@ -17,8 +17,13 @@ public class ArticleServiceImpl implements IArticleService {
     private IArticleDao iArticleDao;
 
     @Override
+    public List<Article> getRecent() {
+        return iArticleDao.selectRecent();
+    }
+
+    @Override
     public List<Article> getByAll() {
 
-        return iArticleDao.selectBy();
+        return iArticleDao.selectAll();
     }
 }

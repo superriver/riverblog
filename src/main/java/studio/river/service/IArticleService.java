@@ -8,6 +8,8 @@ import java.util.List;
  * Created by Administrator on 2017-8-27.
  */
 public interface IArticleService {
+
+    List<Article> getRecent();
     List<Article> getByAll();
 
 }

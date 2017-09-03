@@ -17,9 +17,14 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
 
-<select id="selectBy" resultMap="BaseResultMap">
+<select id="selectRecent" resultMap="BaseResultMap">
   SELECT  * from t_article ORDER BY pub_time DESC LIMIT 3;
 </select>
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT  * from t_article ORDER BY pub_time DESC;
+  </select>
 
   <sql id="Base_Column_List" >
     id, title, summary, category_ids, tag_ids, status, write_time, pub_time, hits, code
