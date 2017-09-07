@@ -10,4 +10,14 @@ app.service("RequestService",function ($http,$q) {
             });
             return deferred.promise;
         };
+
+        this.postRequest=function (url,params,paramType) {
+            var deferred = $q.defer();
+            $http.get(web_project_name+url,params,paramType).success(function () {
+                deferred.resolve(data);
+            }).error(function (e) {
+                console.log(e);
+            });
+            return deferred.promise;
+        };
 })

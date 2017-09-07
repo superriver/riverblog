@@ -3,6 +3,7 @@
  */
 app.controller("ArticleController", function (ArticleService, $scope, $location) {
     var p = $location.search().page;
+
     $scope.currentPage = p ? p : 1;
     $scope.pageSize = 10;
 
@@ -10,11 +11,11 @@ app.controller("ArticleController", function (ArticleService, $scope, $location)
         if (currentPage > $scope.totalItems || currentPage <= 0) {
             $location.search(currentPage);
         } else {
-            ArticleService.list().then(function (data) {
+            ArticleService.list(currentPage,pageSize).then(function (data) {
                 if (data.resultCode == 1) {
-                    console.log("IndexController" + data);
+                    console.log("ArticleController" + data);
                     $scope.articles = data.resultData;
-                    //$scope.totalItems = data.
+                    $scope.totalItems = data
                     $scope.currentPage = currentPage;
                 } else {
 
@@ -24,5 +25,5 @@ app.controller("ArticleController", function (ArticleService, $scope, $location)
         }
 
     };
-    getList();
+    getList( $scope.currentPage, $scope.pageSize);
 });

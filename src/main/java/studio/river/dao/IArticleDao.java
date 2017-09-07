@@ -1,6 +1,7 @@
 package studio.river.dao;
 
 import org.springframework.stereotype.Repository;
+import studio.river.common.PageBean;
 import studio.river.pojo.Article;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface IArticleDao {
 
     List<Article> selectRecent();
 
-    List<Article> selectAll();
+    List<Article> selectAll(PageBean pageBean);
 
     int deleteByPrimaryKey(Integer id);
 

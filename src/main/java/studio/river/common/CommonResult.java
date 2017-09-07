@@ -8,14 +8,14 @@ import java.util.List;
 public class CommonResult<E> {
     private int resultCode;
     private String resultMsg;
-    private List<E> resultData;
+    private Object resultData;
 
     public CommonResult(int resultCode, String resultMsg) {
         this.resultCode = resultCode;
         this.resultMsg = resultMsg;
     }
 
-    public CommonResult(int resultCode, String resultMsg, List<E> resultData) {
+    public CommonResult(int resultCode, String resultMsg,  Object resultData) {
         this.resultCode = resultCode;
         this.resultMsg = resultMsg;
         this.resultData = resultData;
@@ -37,11 +37,11 @@ public class CommonResult<E> {
         this.resultMsg = resultMsg;
     }
 
-    public List<E> getResultData() {
+    public Object getResultData() {
         return resultData;
     }
 
-    public void setResultData(List<E> resultData) {
+    public void setResultData(Object resultData) {
         this.resultData = resultData;
     }
 }

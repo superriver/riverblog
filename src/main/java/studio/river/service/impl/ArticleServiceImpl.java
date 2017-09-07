@@ -2,6 +2,7 @@ package studio.river.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import studio.river.common.PageBean;
 import studio.river.dao.IArticleDao;
 import studio.river.pojo.Article;
 import studio.river.service.IArticleService;
@@ -22,8 +23,9 @@ public class ArticleServiceImpl implements IArticleService {
     }
 
     @Override
-    public List<Article> getByAll() {
-
-        return iArticleDao.selectAll();
+    public PageBean<Article> getByAll(PageBean pageBean) {
+        List<Article>  list= iArticleDao.selectAll(pageBean);
+        pageBean.setPageList(list);
+        return pageBean;
     }
 }
