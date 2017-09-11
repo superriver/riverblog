@@ -3,9 +3,10 @@
  */
 app.service("ArticleService",function (RequestService) {
     this.list=function (pageNumber, pageSize) {
+        console.log("ArticleService--" + pageNumber);
         return RequestService.postRequest("/blog",$.param({
             "pageNumber":pageNumber,
             "pageSize":pageSize
-        }),cfg_form)
+        }),cfg_form);
     };
 })

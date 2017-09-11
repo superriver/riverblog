@@ -1,5 +1,6 @@
 package studio.river.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import studio.river.common.PageBean;
 import studio.river.pojo.Article;
@@ -18,7 +19,9 @@ public interface IArticleDao {
 
     List<Article> selectRecent();
 
-    List<Article> selectAll(PageBean pageBean);
+    List<Article> selectAll(@Param("pageBean") PageBean pageBean);
+
+    int selectCount();
 
     int deleteByPrimaryKey(Integer id);
 

@@ -23,7 +23,15 @@
 
 
   <select id="selectAll" resultMap="BaseResultMap">
-    SELECT  * from t_article ORDER BY pub_time DESC;
+    SELECT  * from t_article  ORDER BY pub_time DESC
+    <if test=" pageBean!=null and pageBean.pageIndex!=null and pageBean.pageSize!=null">
+      LIMIT #{pageBean.pageIndex,jdbcType=INTEGER},#{pageBean.pageSize,jdbcType=INTEGER}
+
+    </if>
+
+  </select>
+  <select id="selectCount" resultType="Integer">
+    SELECT count(*) FROM t_article;
   </select>
 
   <sql id="Base_Column_List" >

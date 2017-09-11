@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import studio.river.common.CommonResult;
 import studio.river.common.PageBean;
+import studio.river.common.PageHelper;
 import studio.river.common.constant.Constant;
 import studio.river.pojo.Article;
 import studio.river.service.IArticleService;
@@ -31,8 +32,9 @@ public class ArticleController {
     public CommonResult<Article> list(){
         String message  = null;
         CommonResult result = null;
-        try{
+        try{System.out.println("1---------");
             List<Article> list = articleService.getRecent();
+            System.out.println("---------"+list.size());
             result= new CommonResult<>(Constant.SUCCESS_CODE,null,list);
         }catch (Exception e){
             message="服务器异常，获取文章失败";
@@ -47,15 +49,17 @@ public class ArticleController {
      */
     @ResponseBody
     @RequestMapping(value = "/blog",method = RequestMethod.POST)
-    public CommonResult<Article> getAll(@RequestParam("pageIndex") int pageIndex,@RequestParam("pageSize") int pageSize){
+    public CommonResult<Article> getAll(PageBean pageBean){
         String message  = null;
         CommonResult result = null;
-        PageBean<Article> pageBean = new PageBean<Article>(pageIndex,pageSize);
         try {
 
-            PageBean<Article> list = articleService.getByAll(pageBean);
+            PageHelper<Article> list = articleService.getByAll(pageBean);
+            System.out.println("PageHelper---------"+list.getPageList().size());
+
             result= new CommonResult<>(Constant.SUCCESS_CODE,null,list);
         }catch (Exception e){
+            System.out.println("----"+e.getMessage());
             message="服务器异常，获取文章失败";
             result = new CommonResult<>(Constant.FAILED_CODE,message);
         }

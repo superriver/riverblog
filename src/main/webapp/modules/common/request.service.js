@@ -13,7 +13,7 @@ app.service("RequestService",function ($http,$q) {
 
         this.postRequest=function (url,params,paramType) {
             var deferred = $q.defer();
-            $http.get(web_project_name+url,params,paramType).success(function () {
+            $http.post(web_project_name+url,params,paramType).success(function (data) {
                 deferred.resolve(data);
             }).error(function (e) {
                 console.log(e);

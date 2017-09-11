@@ -1,6 +1,7 @@
 package studio.river.service;
 
 import studio.river.common.PageBean;
+import studio.river.common.PageHelper;
 import studio.river.pojo.Article;
 
 import java.util.List;
@@ -11,6 +12,6 @@ import java.util.List;
 public interface IArticleService {
 
     List<Article> getRecent();
-    PageBean<Article> getByAll(PageBean pageBean);
+    PageHelper<Article> getByAll(PageBean pageBean);
 
 }

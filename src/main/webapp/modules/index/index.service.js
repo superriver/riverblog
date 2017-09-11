@@ -5,7 +5,6 @@
 app.service("IndexService",function (RequestService) {
     console.log("IndexService---");
     this.list=function () {
-        console.log("ProjectService---");
         return RequestService.getRequest('/recent',cfg_form);
     };
 });

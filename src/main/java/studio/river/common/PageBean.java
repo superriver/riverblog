@@ -5,13 +5,15 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/9/4.
  */
-public class PageBean<T> {
+public class PageBean {
+
+
     private Integer pageIndex = 0;
     //当前页
-    private Integer currentPage = 0;
+    private Integer pageNumber = 0;
 
     //每页的记录数
-    private Integer pageSize = 10;
+    private Integer pageSize = 3;
 
     //总记录数
     private Integer totalCount;
@@ -19,29 +21,27 @@ public class PageBean<T> {
     //总页数
     private Integer totalPage;
 
-    //每页对应记录数的集合
-    private List<T> pageList;
-    public PageBean( List<T> pageList) {
-        this.pageList = pageList;
+    public  PageBean(){
+
     }
-    public PageBean(int currentPage, int pageSize, int totalCount, List<T> pageList) {
-        this.pageList = pageList;
+    public void init(int totalCount) {
         this.totalCount = totalCount;
         totalPage = (totalCount % pageSize == 0) ? totalCount / pageSize : (totalCount / pageSize + 1);
     }
 
-    public PageBean(int currentPage, int pageSize) {
-        this.currentPage = currentPage;
+    public PageBean(int pageNumber, int pageSize) {
+        System.out.println("currentPage---"+pageNumber);
+        this.pageNumber = pageNumber;
         this.pageSize = pageSize;
-        pageIndex = (this.currentPage - 1) * pageSize;
+        this.pageIndex = (this.pageNumber - 1) * this.pageSize;
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
     public int getPageSize() {
@@ -67,12 +67,11 @@ public class PageBean<T> {
     public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
     }
-
-    public List<T> getPageList() {
-        return pageList;
+    public Integer getPageIndex() {
+        return pageIndex;
     }
 
-    public void setPageList(List<T> pageList) {
-        this.pageList = pageList;
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex;
     }
 }
