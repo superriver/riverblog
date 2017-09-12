@@ -10,7 +10,7 @@ public class PageBean {
 
     private Integer pageIndex = 0;
     //当前页
-    private Integer pageNumber = 0;
+    private Integer pageNumber = 1;
 
     //每页的记录数
     private Integer pageSize = 3;
@@ -28,7 +28,12 @@ public class PageBean {
         this.totalCount = totalCount;
         totalPage = (totalCount % pageSize == 0) ? totalCount / pageSize : (totalCount / pageSize + 1);
     }
-
+    /**
+     * 唯一公有构造器
+     *
+     * @param pageNumber 当前页码:默认值为1
+     * @param pageSize   每页显示记录数:默认值为10
+     */
     public PageBean(int pageNumber, int pageSize) {
         System.out.println("currentPage---"+pageNumber);
         this.pageNumber = pageNumber;
@@ -36,42 +41,44 @@ public class PageBean {
         this.pageIndex = (this.pageNumber - 1) * this.pageSize;
     }
 
-    public int getPageNumber() {
-        return pageNumber;
-    }
 
-    public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public int getTotalPage() {
-        return totalPage;
-    }
-
-    public void setTotalPage(int totalPage) {
-        this.totalPage = totalPage;
-    }
     public Integer getPageIndex() {
-        return pageIndex;
+        return (this.pageNumber - 1) * this.pageSize;
     }
 
     public void setPageIndex(Integer pageIndex) {
         this.pageIndex = pageIndex;
+    }
+
+    public Integer getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public Integer getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(Integer totalPage) {
+        this.totalPage = totalPage;
     }
 }

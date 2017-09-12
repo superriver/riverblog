@@ -53,7 +53,7 @@ public class ArticleController {
         String message  = null;
         CommonResult result = null;
         try {
-
+            System.out.println("pageBean---------"+pageBean.getPageIndex());
             PageHelper<Article> list = articleService.getByAll(pageBean);
             System.out.println("PageHelper---------"+list.getPageList().size());
 
