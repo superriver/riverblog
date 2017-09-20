@@ -27,7 +27,6 @@ public class ArticleServiceImpl implements IArticleService {
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
-        System.out.println("articles---------"+articles.size());
         return articles;
     }
 
@@ -35,14 +34,6 @@ public class ArticleServiceImpl implements IArticleService {
     public PageHelper<Article> getByAll(PageBean pageBean) {
         List<Article> list = iArticleDao.selectAll(pageBean);
         int count = iArticleDao.selectCount();
-        System.out.println("article---------"+pageBean.getPageIndex());
-
-        for(Article article:list){
-            System.out.println("article---------"+article.getTitle());
-        }
-
-
-        PageHelper<Article> pageHelper = new PageHelper<>(pageBean, list, count);
-        return pageHelper;
+        return new PageHelper<>(pageBean, list, count);
     }
 }

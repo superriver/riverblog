@@ -1,0 +1,26 @@
+<div class="customContainer">
+
+    <div class="blog-body" style="overflow-x: hidden ;padding: 0;   margin: 0px 10px;">
+        <!--加载进度条 -->
+        <ng-include></ng-include>
+        <div class="blog-content" style="padding: 20px 10px 10px 10px;
+	margin: 0 5px;">
+            <!-- 显示错误信息-->
+            <div ng-if="error" ng-show="false">{{errorMessage}}</div>
+            <div ng-if="!error">
+                <div class="card" style="
+    padding: 5px 20px 6px 20px;
+    background-color: #fff;
+    margin:0px 0px 15px 0px;" ng-repeat="article in articles">
+                    <ng-include src="'modules/blog/show-content-view.html'"></ng-include>
+                </div>
+                <div style="text-align: center" ng-if="articles">
+
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="pageSize" max-size="5"
+                    first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页"
+                    boundary-links="true" boundary-link-numbers="true"  class="pagination_border_radius_0" ng-click="pageChanged(currentPage)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

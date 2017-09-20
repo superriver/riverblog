@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <script src="../../../plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../../plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../../plugins/angularjs/angular.min.js"></script>
+    <script src="../../../plugins/angularjs-extend-lib/angular-route.min.js"></script>
+</head>
+<body ng-app="" style="background-color: #D0D0D0">
+<div style="overflow: scroll">
+
+    <!-- 主题-->
+
+    <div style="height: 400px;;margin-bottom: 10px">
+        <div class="article-header" >
+            <div class="col-sm-12" style="background-color: #ffffff;padding: 0;text-align: left;margin-bottom: 5px">
+                <h3>
+                    好烟看根据{{}}
+                </h3>
+            </div>
+
+        </div>
+
+        <div class="article-body">
+            <!-- 摘要-->
+            <div class="col-sm-12  summary" style="background-color: #ffffff">
+                <div style="color:#9B9B9B;font-size:13px;padding-top:5px">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                    <a style="" href="">{{article.categoryName}}</a>
+                    <span ng-if="article.tagNames" class="glyphicon glyphicon-tags hidden-sm hidden-xs"></span>
+                    <span ng-repeat="tName in article.tagNames" class="hidden-sm hidden-xs">
+                        <a href="#!/blog/tag/{{tName}}">
+                            <span>{{tName}}</span>
+                        </a>
+                    </span>
+
+                    <span class="pull-right">
+                        <span class="glyphicon glyphicon-time"></span>
+                        <a style="margin-right: 5px" title="归档:{}" href=""></a>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span style="margin-right: 5px">阅读{{article.hits}}</span>
+                        <span class="glyphicon glyphicon-comment"></span>
+                        <span>评论({{article.countMessages}})</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-12 content">
+                <div ng-bind-html="article.content"></div>
+            </div>
+
+            <div class="row visible-sm visible-xs">
+                <span style="float: left;">标签：</span>
+                <span ng-repeat="tName in article.tagNames" style="float: left">
+                                <span class="glyphicon glyphicon-tag"></span>
+                                <a href="#!/blog/tag/{{tName}}">
+                                    <span> {{tName}} </span>
+                                </a>&nbsp;
+                </span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- 页面翻转-->
+    <div style="background-color: #ffffff;height: 50px;margin-bottom: 10px">
+        <div class="col-sm-12">
+            <span class="glyphicon glyphicon-arrow-up"></span>
+            <a href=""><span>上一篇:</span></a>
+            <span ng-if=""><span>上一篇:</span>没有了...</span>
+        </div>
+
+        <div class="col-sm-12">
+            <span class="glyphicon glyphicon-arrow-down"></span>
+            <a href=""><span>下一篇:</span></a>
+            <span ng-if=""><span>下一篇:</span>没有了...</span>
+        </div>
+
+    </div>
+
+    <!--留言内容-->
+    <div style="margin-bottom: 10px" ng-init="messages=[
+    {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
+    {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
+    {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
+
+    ]">
+        <div>
+            <div class="col-xs-12" style="background-color: #00c4ff;margin:0 10px 0 10px">
+                <h3>
+                    <span class="glyphicon btn-lg glyphicon-comment"></span>
+                    查看留言<span ng-if="messages">>({{messages.length}})条</span>
+                </h3>
+            </div>
+            <!--留言主体-->
+
+            <div ng-repeat="msg in messages" style="margin: 10px;background-color: #ffffff;border: 2px silver solid ">
+                <h2>{{msg.name}}</h2>
+                <div style="padding: 10px 15px 5px 15px;">
+                    <p>{{msg.content}}</p>
+                </div>
+                <p class="" style="color: #9B9B9B;margin: 0 10px 4px 0;font-size:10px;text-align: right;">
+                    发表于{{msg.time|date:'yyyy-MM-dd HH:mm'}}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--发表留言-->
+    <div style="background-color: #ffffff;height: 300px">
+
+    </div>
+
+</div>
+
+</body>
+</html>
