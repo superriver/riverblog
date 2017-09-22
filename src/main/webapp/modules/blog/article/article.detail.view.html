@@ -14,7 +14,7 @@
 
     <!-- 主题-->
 
-    <div style="height: 400px;;margin-bottom: 10px">
+    <div style="height: 400px;margin-bottom: 10px">
         <div class="article-header" >
             <div class="col-sm-12" style="background-color: #ffffff;padding: 0;text-align: left;margin-bottom: 5px">
                 <h3>
@@ -24,9 +24,9 @@
 
         </div>
 
-        <div class="article-body">
+        <div class="article-body" style="background-color: #ffffff">
             <!-- 摘要-->
-            <div class="col-sm-12  summary" style="background-color: #ffffff">
+            <div class="col-sm-12  summary" style="margin-bottom: 5px;background-color: #ffffff">
                 <div style="color:#9B9B9B;font-size:13px;padding-top:5px">
                     <span class="glyphicon glyphicon-th-list"></span>
                     <a style="" href="">{{article.categoryName}}</a>
@@ -47,22 +47,22 @@
                     </span>
                 </div>
             </div>
-            <div class="col-sm-12 content">
-                <div ng-bind-html="article.content"></div>
+
+            <div class="col-sm-12" style="background-color: #ffffff;margin-top: 100;height: 200px">
+                <div ng-bind-html="article.content">
+                </div>
             </div>
 
-            <div class="row visible-sm visible-xs">
-                <span style="float: left;">标签：</span>
-                <span ng-repeat="tName in article.tagNames" style="float: left">
-                                <span class="glyphicon glyphicon-tag"></span>
-                                <a href="#!/blog/tag/{{tName}}">
-                                    <span> {{tName}} </span>
-                                </a>&nbsp;
-                </span>
-            </div>
+            <!--<div class="row visible-sm visible-xs">-->
+                <!--<span style="float: left;">标签：</span>-->
+                <!--<span ng-repeat="tName in article.tagNames" style="float: left">-->
+                                <!--<span class="glyphicon glyphicon-tag"></span>-->
+                                <!--<a href="#!/blog/tag/{{tName}}">-->
+                                    <!--<span> {{tName}} </span>-->
+                                <!--</a>&nbsp;-->
+                <!--</span>-->
+            <!--</div>-->
         </div>
-
-
     </div>
 
     <!-- 页面翻转-->
@@ -86,7 +86,6 @@
     {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
     {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
     {name:'river',content:'我啊尴尬给卡尴尬可归纳',time:'2017456'},
-
     ]">
         <div>
             <div class="col-xs-12" style="background-color: #00c4ff;margin:0 10px 0 10px">
@@ -112,8 +111,71 @@
     </div>
 
     <!--发表留言-->
-    <div style="background-color: #ffffff;height: 300px">
+    <div style="height:500px;background-color: #ffffff;margin-top: 10px">
+            <div class="" style="margin: 50px;">
+                <div class="col-xs-12">
+                    <h3>发表您的看法</h3>
+                    <form class="form-horizontal" name="messageForm" ng-submit="">
+                        <div class="form-group">
+                                <div class="row">
+                                    <label>邮箱</label>
+                                    <div>
+                                        <input placeholder="必填" class="form-control" type="email" name="email"
+                                        ng-model="guest.email" required/>
 
+                                    </div>
+
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label>昵称</label><!--<span style="padding-left:20px;font-size: 12px;color:green;"
+                                                           ng-bind="nicknameValidInfo"></span>-->
+                                <div><input placeholder="必填，您的大名" class="form-control" type="text"
+                                            name="nickname" ng-model="guest.nickname"
+                                            required/>
+                                    <!--ng-blur="getGuestInfoByNickname(guest.email,guest.nickname)"-->
+                                    <!--ng-disabled="!guest.email"-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label>个人网址</label>
+
+                                <div><input placeholder="希望我们能够互相信任 ^_^" class="form-control"
+                                            name="personalWebsite"
+                                            ng-model="guest.personalWebsite" type="text"/></div>
+                                <!--ng-disabled="!guest.email"-->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>观点</label>
+
+                            <div class="col-sm-12" style="padding:0">
+                                <div id="message-editormd"
+                                     style="margin-bottom: 0;width:100%;border-color: silver;">
+                                        <textarea class="editormd-markdown-textarea"
+                                                  name="$id-markdown-doc"></textarea>
+                                    <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
+                                    <!--<textarea class="editormd-html-textarea"
+                                              name="$id-html-code"></textarea>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" ng-disabled="messageForm.$invalid" class="btn btn-primary"
+                                style="width: 100px;margin-top: 10px;">提 交
+                        </button>
+                        <span style="padding-left:20px;font-size: 12px;color:red;"
+                              ng-bind="contentValidInfo"></span>
+                        <span style="line-height: 36px;color:green" ng-bind="resultMessage"></span>
+                    </form>
+                </div>
+            </div>
     </div>
 
 </div>

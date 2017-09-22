@@ -32,7 +32,8 @@ public class ArticleController {
     public CommonResult<Article> list(){
         String message  = null;
         CommonResult result = null;
-        try{System.out.println("1---------");
+        try{
+            System.out.println("1---------");
             List<Article> list = articleService.getRecent();
             System.out.println("---------"+list.size());
             result= new CommonResult<>(Constant.SUCCESS_CODE,null,list);
