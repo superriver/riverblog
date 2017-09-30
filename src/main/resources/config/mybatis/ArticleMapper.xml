@@ -26,7 +26,6 @@
     SELECT  * from t_article  ORDER BY pub_time DESC
     <if test=" pageBean!=null and pageBean.pageIndex!=null and pageBean.pageSize!=null">
       LIMIT #{pageBean.pageIndex,jdbcType=INTEGER},#{pageBean.pageSize,jdbcType=INTEGER}
-
     </if>
 
   </select>
@@ -34,6 +33,25 @@
     SELECT count(*) FROM t_article;
   </select>
 
+  <select id="getByVoCode">
+
+  </select>
+
+  <select id="getByVoCode" resultMap="BaseResultMap">
+    SELECT  t1.*,t2.name as categroy_name,t2.code as category_code
+    FROM t_article t1
+    LEFT JOIN t_category t2
+  ON
+  t1.category_ids = t2.id
+  WHERE
+  t1.code = #{code,jdbcType=VARCHAR}
+  AND
+  t1.category_ids = t2.id
+  </select>
+
+  <select id="selectNextOrPreVoBy">
+
+  </select>
   <sql id="Base_Column_List" >
     id, title, summary, category_ids, tag_ids, status, write_time, pub_time, hits, code
   </sql>

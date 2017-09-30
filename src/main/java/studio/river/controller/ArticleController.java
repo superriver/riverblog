@@ -2,10 +2,7 @@ package studio.river.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import studio.river.common.CommonResult;
 import studio.river.common.PageBean;
 import studio.river.common.PageHelper;
@@ -14,6 +11,7 @@ import studio.river.pojo.Article;
 import studio.river.service.IArticleService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017-8-27.
@@ -69,4 +67,11 @@ public class ArticleController {
     /**
      * 获取文章记录数
      */
+    @ResponseBody
+    @RequestMapping(value = "/blog/article/{code}",method = RequestMethod.GET)
+    public CommonResult getArticleByCode(@PathVariable("code") String articleCode){
+       Map<String,Object> map= articleService.getByVoCode(articleCode);
+        CommonResult result = null;
+       return result;
+    }
 }

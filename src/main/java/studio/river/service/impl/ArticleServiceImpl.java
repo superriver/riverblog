@@ -7,8 +7,11 @@ import studio.river.common.PageHelper;
 import studio.river.dao.IArticleDao;
 import studio.river.pojo.Article;
 import studio.river.service.IArticleService;
+import studio.river.vo.ArticleVo;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017-8-27.
@@ -35,5 +38,16 @@ public class ArticleServiceImpl implements IArticleService {
         List<Article> list = iArticleDao.selectAll(pageBean);
         int count = iArticleDao.selectCount();
         return new PageHelper<>(pageBean, list, count);
+    }
+
+    @Override
+    public Map<String, Object> getByVoCode(String code) {
+        ArticleVo article = iArticleDao.getByVoCode(code);
+        Map<String, Object> map = new HashMap<>();
+        Article preArticle = iArticleDao.selectNextOrPreVoBy(article,false);
+        Article nextArticle = iArticleDao.selectNextOrPreVoBy(article,true);
+        map.put("current",article);
+
+        return map;
     }
 }
