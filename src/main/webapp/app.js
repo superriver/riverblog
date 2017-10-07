@@ -15,10 +15,17 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "modules/index/index.view.html",
             controller: 'IndexController'
         }
-    ).when("/blog",
+    ).
+    when("/blog",
         {
-            templateUrl: "modules/blog/article.view.html",
+            templateUrl: "modules/blog/article/article.view.html",
             controller: 'ArticleController'
-        });
+        }).
+    when("/blog/article/:articleCode", {
+        templateUrl : "modules/blog/article/article.detail.view.html",
+        controller : 'ArticleDetailController'
+    })
+    ;
+
     $locationProvider.hashPrefix('!');
 });

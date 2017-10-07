@@ -8,5 +8,10 @@ app.service("ArticleService",function (RequestService) {
             "pageNumber":pageNumber,
             "pageSize":pageSize
         }),cfg_form);
+
+
     };
-})
+    this.get = function (code) {
+        return RequestService.getRequest('/blog/article/' + code, cfg_form);
+    };
+});

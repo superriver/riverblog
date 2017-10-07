@@ -13,6 +13,23 @@
     <result column="hits" property="hits" jdbcType="INTEGER" />
     <result column="code" property="code" jdbcType="VARCHAR" />
   </resultMap>
+
+
+  <resultMap id="ArticleVoMap" type="studio.river.vo.ArticleVo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="category_ids" property="categoryIds" jdbcType="VARCHAR" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+    <result column="tag_ids" property="tagIds" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="write_time" property="writeTime" jdbcType="TIMESTAMP" />
+    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+    <result column="hits" property="hits" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+  </resultMap>
+
   <resultMap id="ResultMapWithBLOBs" type="studio.river.pojo.Article" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -33,12 +50,9 @@
     SELECT count(*) FROM t_article;
   </select>
 
-  <select id="getByVoCode">
 
-  </select>
-
-  <select id="getByVoCode" resultMap="BaseResultMap">
-    SELECT  t1.*,t2.name as categroy_name,t2.code as category_code
+  <select id="getByVoCode" resultMap="ArticleVoMap">
+    SELECT  t1.*,t2.name as category_name,t2.code as category_code
     FROM t_article t1
     LEFT JOIN t_category t2
   ON
@@ -48,6 +62,8 @@
   AND
   t1.category_ids = t2.id
   </select>
+
+
 
   <select id="selectNextOrPreVoBy">
 

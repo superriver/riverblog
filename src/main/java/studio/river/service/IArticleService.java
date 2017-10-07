@@ -12,8 +12,22 @@ import java.util.Map;
  */
 public interface IArticleService {
 
+    /**
+     * 获取最近发布的文章
+     * @return
+     */
     List<Article> getRecent();
+
+    /**
+     * 获取所有的文章记录
+     * @param pageBean
+     * @return
+     */
     PageHelper<Article> getByAll(PageBean pageBean);
 
-    Map<String,Object> getByVoCode(String code);
+    /**
+     * 通过文章id获取文章
+     * @return
+     */
+    Map<String ,Object> getArticleVoByCode(String code);
 }

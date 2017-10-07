@@ -70,8 +70,16 @@ public class ArticleController {
     @ResponseBody
     @RequestMapping(value = "/blog/article/{code}",method = RequestMethod.GET)
     public CommonResult getArticleByCode(@PathVariable("code") String articleCode){
-       Map<String,Object> map= articleService.getByVoCode(articleCode);
-        CommonResult result = null;
-       return result;
+       Map<String,Object> map= articleService.getArticleVoByCode(articleCode);
+        String msg = null;
+        CommonResult commonResult=null;
+        System.out.println("getArticleByCode---------"+map.size());
+        if(map==null){
+            msg="抱歉，你要查看的文章不存在！";
+            commonResult = new CommonResult(Constant.FAILED_CODE,msg);
+        }else{
+            commonResult =  new CommonResult(Constant.SUCCESS_CODE,msg,map);
+        }
+       return commonResult;
     }
 }
