@@ -54,14 +54,14 @@
     <div style="background-color: #ffffff;height: 50px;margin-bottom: 10px">
         <div class="col-sm-12">
             <span class="glyphicon glyphicon-arrow-up"></span>
-            <a href=""><span>上一篇:</span></a>
-            <span ng-if=""><span>上一篇:</span>没有了...</span>
+            <a ng-if="preArticle" href="#!/blog/article/{{preArticle.code}}"><span>上一篇:{{preArticle.title}}</span></a>
+            <span ng-if="!preArticle"><span>上一篇:</span>没有了...</span>
         </div>
 
         <div class="col-sm-12">
             <span class="glyphicon glyphicon-arrow-down"></span>
-            <a href=""><span>下一篇:</span></a>
-            <span ng-if=""><span>下一篇:</span>没有了...</span>
+            <a ng-if="nextArticle" href="#!/blog/article/{{nextArticle.code}}"><span>下一篇:{{nextArticle.title}}</span></a>
+            <span ng-if="!nextArticle"><span>下一篇:</span>没有了...</span>
         </div>
 
     </div>

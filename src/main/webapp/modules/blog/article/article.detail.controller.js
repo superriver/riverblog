@@ -10,6 +10,8 @@ app.controller("ArticleDetailController",function($scope,$routeParams,ArticleSer
                 $scope.error=true;
             }else{
                 $scope.article =data.resultData.currentArticle;
+                $scope.preArticle = data.resultData.preArticle;
+                $scope.nextArticle = data.resultData.nextArticle;
             }
         });
     }

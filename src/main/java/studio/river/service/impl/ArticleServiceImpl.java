@@ -44,11 +44,14 @@ public class ArticleServiceImpl implements IArticleService {
     public Map<String, Object> getArticleVoByCode(String code) {
         ArticleVo article = iArticleDao.getByVoCode(code);
         Map<String, Object> map = new HashMap<>();
-//        Article preArticle = iArticleDao.selectNextOrPreVoBy(article,false);
-//        Article
-//                nextArticle = iArticleDao.selectNextOrPreVoBy(article,true);
-        map.put("currentArticle",article);
+        Article preArticle = iArticleDao.selectNextOrPreVoBy(article,false);
+        Article nextArticle = iArticleDao.selectNextOrPreVoBy(article,true);
+        System.out.println("preArticle---------"+preArticle);
+        System.out.println("nextArticle---------"+nextArticle.getTitle());
 
+        map.put("currentArticle",article);
+        map.put("preArticle",preArticle);
+        map.put("nextArticle",nextArticle);
         return map;
     }
 }

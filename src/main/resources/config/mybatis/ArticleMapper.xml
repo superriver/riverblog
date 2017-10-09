@@ -65,9 +65,24 @@
 
 
 
-  <select id="selectNextOrPreVoBy">
-
+  <select id="selectNextOrPreVoBy" resultMap="BaseResultMap">
+    select t1.id,t1.title,t1.code
+    from t_article t1
+    <where>
+      <if test="nextOrPreVo != true">
+        AND t1.pub_time > #{article.pubTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="nextOrPreVo == true">
+        AND #{article.pubTime,jdbcType=TIMESTAMP} > t1.pub_time
+      </if>
+    </where>
+    order by t1.pub_time
+    <if test="nextOrPreVo == true">
+      desc
+    </if>
+    limit 1
   </select>
+
   <sql id="Base_Column_List" >
     id, title, summary, category_ids, tag_ids, status, write_time, pub_time, hits, code
   </sql>
