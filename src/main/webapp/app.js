@@ -24,8 +24,15 @@ app.config(function ($routeProvider, $locationProvider) {
     when("/blog/article/:articleCode", {
         templateUrl : "modules/blog/article/article.detail.view.html",
         controller : 'ArticleDetailController'
-    })
-    ;
+    }).
+    when("/blog/archive",{
+        templateUrl : "modules/blog/archive/archive.list.view.html",
+        controller:'ArchiveController'
+    }).
+    when("/blog/archive/:archiveName",{
+        templateUrl : "modules/blog/archive/archive.articles.view.html",
+        controller:'ArchiveArticleController'
+    });
 
     $locationProvider.hashPrefix('!');
 });

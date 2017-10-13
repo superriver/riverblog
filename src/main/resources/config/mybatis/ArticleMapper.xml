@@ -34,18 +34,21 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
 
+  <!--最近发布的文章 -->
 <select id="selectRecent" resultMap="BaseResultMap">
   SELECT  * from t_article ORDER BY pub_time DESC LIMIT 3;
 </select>
 
 
+  <!--查询所有的文章 -->
   <select id="selectAll" resultMap="BaseResultMap">
     SELECT  * from t_article  ORDER BY pub_time DESC
     <if test=" pageBean!=null and pageBean.pageIndex!=null and pageBean.pageSize!=null">
       LIMIT #{pageBean.pageIndex,jdbcType=INTEGER},#{pageBean.pageSize,jdbcType=INTEGER}
     </if>
-
   </select>
+
+  <!--查询所有的文章数量 -->
   <select id="selectCount" resultType="Integer">
     SELECT count(*) FROM t_article;
   </select>
@@ -62,7 +65,6 @@
   AND
   t1.category_ids = t2.id
   </select>
-
 
 
   <select id="selectNextOrPreVoBy" resultMap="BaseResultMap">
@@ -83,24 +85,38 @@
     limit 1
   </select>
 
-  <sql id="Base_Column_List" >
-    id, title, summary, category_ids, tag_ids, status, write_time, pub_time, hits, code
-  </sql>
-  <sql id="Blob_Column_List" >
-    content
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from t_article
-    where id = #{id,jdbcType=INTEGER}
+  <resultMap type="studio.river.vo.ArchiveVo"  id="ArchiveVoMap">
+    <result property="name" column="year_name" />
+    <result property="count" column="year_count" />
+    <collection property="childArchive" column="child_archive" ofType="studio.river.vo.ArchiveVo">
+      <result property="name" column="month_name" />
+      <result property="count" column="month_count" />
+    </collection>
+  </resultMap>
+
+  <select id="getArchiveList" resultMap="ArchiveVoMap">
+    SELECT t1.year_name,t1.year_count,t2.month_name,t2.month_count
+    FROM
+      (
+        SELECT count(*) as year_count,DATE_FORMAT(t.pub_time,"%Y年") as year_name
+        FROM t_article as t WHERE t.pub_time!='' GROUP BY year_name ORDER BY t.pub_time DESC
+      ) t1
+      LEFT JOIN
+      (
+        SELECT count(*) as month_count,DATE_FORMAT(t.pub_time,"%Y年") as year_name,
+          DATE_FORMAT(t.pub_time,"%Y-%m") as month_name
+        FROM t_article as t WHERE t.pub_time!='' GROUP BY month_name ORDER BY month_name DESC
+      ) t2
+      on t1.year_name = t2.year_name
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_article
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
+
+  <select id="selectArchiveArticles" resultMap="BaseResultMap">
+    SELECT t.* FROM t_article as t
+    WHERE DATE_FORMAT(t.pub_time,"%Y-%m") = #{month_name,jdbcType=VARCHAR}
+    ORDER BY t.pub_time DESC
+  </select>
+
   <insert id="insert" parameterType="studio.river.pojo.Article" >
     insert into t_article (id, title, summary, 
       category_ids, tag_ids, status, 

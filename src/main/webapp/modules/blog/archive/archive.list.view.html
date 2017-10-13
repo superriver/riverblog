@@ -8,13 +8,22 @@
     <script src="../../../plugins/bootstrap/bootstrap.min.js"></script>
     <script src="../../../plugins/angularjs/angular.min.js"></script>
     <script src="../../../plugins/angularjs-extend-lib/angular-route.min.js"></script>
+<style>
+    .archive-card li {
+        cursor: pointer;
+    }
+    .archive-card li:hover {
+        background-color: #EDF0F2;
+    }
+
+    .panel-heading {
+        border-radius: 0;
+    }
+</style>
 </head>
 <body ng-app="">
 <div class="customContainter">
-    <div class="archive-body" ng-init="archives=[
-    {name:'2017',count:'2',childArchive:[{name:'2017-9',counts:'2'},{name:'2017-9',counts:'2'},{name:'2017-9',counts:'2'}]},
-    {name:'2017',count:'2',childArchive:[{name:'a',counts:'2'}]},
-    ]">
+    <div class="archive-body" style="overflow-x: hidden ;padding: 0;   margin: 0px 10px;">
         <div class="col-xs-12" ng-repeat="archive in archives">
             <div class="archive-card">
                 <div class="panel panel-primary">
@@ -22,13 +31,13 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <span class="glyphicon glyphicon-time"></span>&nbsp;
-                            {{archive.name}}<span style="font-size: 12px">(共{{}}篇)</span>
+                            {{archive.name}}<span style="font-size: 12px">(共{{archive.count}}篇)</span>
                         </h3>
                     </div>
                     <ul class="list-group">
-                        <li ng-repeat="monthArchive in archive.childArchive" class="list-group-item">
+                        <li ng-repeat="monthArchive in archive.childArchive| orderBy : '-name'" class="list-group-item" ng-click="selectArchive(monthArchive.name)">
                             {{monthArchive.name}}<span
-                                style="font-size: 12px;">（{{monthArchive.counts}}）</span>
+                                style="font-size: 12px;">（{{monthArchive.count}}）</span>
                         </li>
                     </ul>
                 </div>

@@ -3,6 +3,7 @@ package studio.river.service;
 import studio.river.common.PageBean;
 import studio.river.common.PageHelper;
 import studio.river.pojo.Article;
+import studio.river.vo.ArchiveVo;
 
 import java.util.List;
 import java.util.Map;
@@ -30,4 +31,15 @@ public interface IArticleService {
      * @return
      */
     Map<String ,Object> getArticleVoByCode(String code);
+
+    /**
+     * 文章归档
+     */
+    /**
+     * 获取最近发布的文章
+     * @return
+     */
+    List<ArchiveVo> getArchiveList();
+
+    List<Article> getArchiveArticles(String name);
 }

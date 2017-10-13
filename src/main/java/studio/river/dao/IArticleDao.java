@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import studio.river.common.PageBean;
 import studio.river.pojo.Article;
+import studio.river.vo.ArchiveVo;
 import studio.river.vo.ArticleVo;
 
 import java.util.List;
@@ -29,9 +30,11 @@ public interface IArticleDao {
     Article selectNextOrPreVoBy(@Param("article") Article article,
                                 @Param("nextOrPreVo") Boolean nextOrPreVo);
 
-    int insert(Article record);
 
-    int insertSelective(Article record);
+    List<ArchiveVo> getArchiveList();
+
+
+    List<Article> selectArchiveArticles(@Param("month_name") String monthName);
 
     Article selectByPrimaryKey(Integer id);
 

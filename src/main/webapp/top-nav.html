@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="plugins/jquery/jquery-1.11.3.min.js"></script>
 	<script src="plugins/bootstrap/bootstrap.min.js"></script>
+	<style type="text/css">
+		.navbar .nav >li .dropdown-menu{
+			margin: 0;
+		}
+		.navbar .nav > li:hover .dropdown-menu{
+			display: block;
+		}
+	</style>
 </head>
 <body>
  	<nav class="navbar navbar-inverse" role = "navigation">
@@ -18,8 +26,8 @@
  			<li class="dropdown">
  				<a href="#!/blog" class="dropdown-toggle" data-toggle="dropdown">博客<b class="caret"></b></a>
  				<ul class="dropdown-menu">
- 					<li><a>归档</a></li>
- 					<li><a>分类</a></li>
+ 					<li><a href="#!/blog/archive">归档</a></li>
+ 					<li><a href="#!/blog/category">分类</a></li>
  				</ul>
  			</li>
  			<li><a href="#!/project">项目</a></li>

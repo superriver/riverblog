@@ -7,6 +7,7 @@ import studio.river.common.PageHelper;
 import studio.river.dao.IArticleDao;
 import studio.river.pojo.Article;
 import studio.river.service.IArticleService;
+import studio.river.vo.ArchiveVo;
 import studio.river.vo.ArticleVo;
 
 import java.util.HashMap;
@@ -23,7 +24,6 @@ public class ArticleServiceImpl implements IArticleService {
 
     @Override
     public List<Article> getRecent() {
-        System.out.println("getRecent---------");
         List<Article> articles=null;
         try {
             articles= iArticleDao.selectRecent();
@@ -46,12 +46,20 @@ public class ArticleServiceImpl implements IArticleService {
         Map<String, Object> map = new HashMap<>();
         Article preArticle = iArticleDao.selectNextOrPreVoBy(article,false);
         Article nextArticle = iArticleDao.selectNextOrPreVoBy(article,true);
-        System.out.println("preArticle---------"+preArticle);
-        System.out.println("nextArticle---------"+nextArticle.getTitle());
-
         map.put("currentArticle",article);
         map.put("preArticle",preArticle);
         map.put("nextArticle",nextArticle);
         return map;
+    }
+
+    @Override
+    public List<ArchiveVo> getArchiveList() {
+        return iArticleDao.getArchiveList();
+    }
+
+    @Override
+    public List<Article> getArchiveArticles(String name) {
+        List<Article> list = iArticleDao.selectArchiveArticles(name);
+        return list;
     }
 }
