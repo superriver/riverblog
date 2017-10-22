@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017-8-27.
  */
-public class CommonResult<E> {
+public class CommonResult {
     private int resultCode;
     private String resultMsg;
     private Object resultData;

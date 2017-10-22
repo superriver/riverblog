@@ -29,15 +29,15 @@ public class ArticleController {
     //获取最近发布的文章
     @ResponseBody
     @RequestMapping(value = "/recent", method = RequestMethod.GET)
-    public CommonResult<Article> list() {
+    public CommonResult list() {
         String message = null;
         CommonResult result = null;
         try {
             List<Article> list = articleService.getRecent();
-            result = new CommonResult<>(Constant.SUCCESS_CODE, null, list);
+            result = new CommonResult(Constant.SUCCESS_CODE, null, list);
         } catch (Exception e) {
             message = "服务器异常，获取文章失败";
-            result = new CommonResult<>(Constant.FAILED_CODE, message);
+            result = new CommonResult(Constant.FAILED_CODE, message);
         }
         return result;
     }
@@ -49,7 +49,7 @@ public class ArticleController {
      */
     @ResponseBody
     @RequestMapping(value = "/blog", method = RequestMethod.POST)
-    public CommonResult<Article> getAll(PageBean pageBean) {
+    public CommonResult getAll(PageBean pageBean) {
         String message = null;
         CommonResult result = null;
         try {
@@ -57,11 +57,11 @@ public class ArticleController {
             PageHelper<Article> list = articleService.getByAll(pageBean);
             System.out.println("PageHelper---------" + list.getPageList().size());
 
-            result = new CommonResult<>(Constant.SUCCESS_CODE, null, list);
+            result = new CommonResult(Constant.SUCCESS_CODE, null, list);
         } catch (Exception e) {
             System.out.println("----" + e.getMessage());
             message = "服务器异常，获取文章失败";
-            result = new CommonResult<>(Constant.FAILED_CODE, message);
+            result = new CommonResult(Constant.FAILED_CODE, message);
         }
         return result;
     }
@@ -76,7 +76,7 @@ public class ArticleController {
         String msg = null;
         CommonResult commonResult = null;
         System.out.println("getArticleByCode---------" + map.size());
-        if (map == null) {
+        if (map.size()<0) {
             msg = "抱歉，你要查看的文章不存在！";
             commonResult = new CommonResult(Constant.FAILED_CODE, msg);
         } else {
@@ -96,10 +96,10 @@ public class ArticleController {
         String message = null;
         try {
             List<ArchiveVo> list = articleService.getArchiveList();
-            result = new CommonResult<>(Constant.SUCCESS_CODE, null, list);
+            result = new CommonResult(Constant.SUCCESS_CODE, null, list);
         } catch (Exception e) {
             message = "服务器异常，获取文章归档失败";
-            result = new CommonResult<>(Constant.FAILED_CODE, message);
+            result = new CommonResult(Constant.FAILED_CODE, message);
         }
         return result;
     }
@@ -111,6 +111,6 @@ public class ArticleController {
     @RequestMapping(value = "/blog/archive/{name}", method = RequestMethod.GET)
     public CommonResult getArchiveArticles(@PathVariable("name") String name) {
         List<Article> list = articleService.getArchiveArticles(name);
-        return new CommonResult<>(Constant.SUCCESS_CODE, null, list);
+        return new CommonResult(Constant.SUCCESS_CODE, null, list);
     }
 }

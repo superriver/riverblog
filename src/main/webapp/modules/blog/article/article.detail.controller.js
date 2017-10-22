@@ -4,7 +4,7 @@
 app.controller("ArticleDetailController",function($scope,$routeParams,ArticleService){
 
     $scope.get=function (articleCode) {
-        ArticleService.get (articleCode).then(function(data){
+        ArticleService.get(articleCode).then(function(data){
             if(data.resultCode==0)
             {
                 $scope.error=true;

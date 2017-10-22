@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <script src="../../../plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../../plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../../plugins/angularjs/angular.min.js"></script>
+    <script src="../../../plugins/angularjs-extend-lib/angular-route.min.js"></script>
+</head>
+<body ng-app="">
+<div>
+    <div>
+        <div class="col-sm-12 col-md-6 col-lg-6" ng-repeat="category in categorys">
+            <div class="category-card">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <p class="panel-title">
+                            <a href="#/blog/category/{{category.code}}">
+                                {{category.name}}</a>
+                            </a>
+                            <span>({{ category.counts}})</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
