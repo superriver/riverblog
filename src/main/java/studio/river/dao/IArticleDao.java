@@ -36,7 +36,7 @@ public interface IArticleDao {
 
     List<Article> selectArchiveArticles(@Param("month_name") String monthName);
 
-    Article selectByPrimaryKey(Integer id);
+    List<Article> getCategoryArticles(@Param("categoryCode") String code);
 
     int updateByPrimaryKeySelective(Article record);
 

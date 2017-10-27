@@ -1,6 +1,7 @@
 package studio.river.dao;
 
 import org.springframework.stereotype.Repository;
+import studio.river.pojo.Article;
 import studio.river.pojo.Category;
 
 import java.util.List;
@@ -12,4 +13,6 @@ import java.util.List;
 public interface ICategoryDao {
 
     List<Category> getAllCategory();
+
+
 }

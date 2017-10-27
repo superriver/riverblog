@@ -9,6 +9,7 @@ app.controller("ArticleDetailController",function($scope,$routeParams,ArticleSer
             {
                 $scope.error=true;
             }else{
+                console.log("ArticleDetailController--"+data)
                 $scope.article =data.resultData.currentArticle;
                 $scope.preArticle = data.resultData.preArticle;
                 $scope.nextArticle = data.resultData.nextArticle;

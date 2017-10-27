@@ -67,6 +67,7 @@
   </select>
 
 
+
   <select id="selectNextOrPreVoBy" resultMap="BaseResultMap">
     select t1.id,t1.title,t1.code
     from t_article t1
@@ -117,6 +118,11 @@
     ORDER BY t.pub_time DESC
   </select>
 
+  <select id="getCategoryArticles" resultMap="BaseResultMap">
+    SELECT  * FROM t_article as t1
+    WHERE t1.category_ids = #{categoryCode,jdbcType=VARCHAR}
+  </select>
+
   <insert id="insert" parameterType="studio.river.pojo.Article" >
     insert into t_article (id, title, summary, 
       category_ids, tag_ids, status, 
@@ -127,79 +133,8 @@
       #{writeTime,jdbcType=TIMESTAMP}, #{pubTime,jdbcType=TIMESTAMP}, #{hits,jdbcType=INTEGER}, 
       #{code,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="studio.river.pojo.Article" >
-    insert into t_article
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="summary != null" >
-        summary,
-      </if>
-      <if test="categoryIds != null" >
-        category_ids,
-      </if>
-      <if test="tagIds != null" >
-        tag_ids,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="writeTime != null" >
-        write_time,
-      </if>
-      <if test="pubTime != null" >
-        pub_time,
-      </if>
-      <if test="hits != null" >
-        hits,
-      </if>
-      <if test="code != null" >
-        code,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="summary != null" >
-        #{summary,jdbcType=VARCHAR},
-      </if>
-      <if test="categoryIds != null" >
-        #{categoryIds,jdbcType=VARCHAR},
-      </if>
-      <if test="tagIds != null" >
-        #{tagIds,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="writeTime != null" >
-        #{writeTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="pubTime != null" >
-        #{pubTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="hits != null" >
-        #{hits,jdbcType=INTEGER},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="studio.river.pojo.Article" >
     update t_article
     <set >

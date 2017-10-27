@@ -42,4 +42,6 @@ public interface IArticleService {
     List<ArchiveVo> getArchiveList();
 
     List<Article> getArchiveArticles(String name);
+
+    List<Article> getAllByCategoryCode(String code);
 }

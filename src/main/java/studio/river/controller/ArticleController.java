@@ -75,7 +75,7 @@ public class ArticleController {
         Map<String, Object> map = articleService.getArticleVoByCode(articleCode);
         String msg = null;
         CommonResult commonResult = null;
-        System.out.println("getArticleByCode---------" + map.size());
+        System.out.println("getArticleByCe---------" + map.size());
         if (map.size()<0) {
             msg = "抱歉，你要查看的文章不存在！";
             commonResult = new CommonResult(Constant.FAILED_CODE, msg);
@@ -113,4 +113,6 @@ public class ArticleController {
         List<Article> list = articleService.getArchiveArticles(name);
         return new CommonResult(Constant.SUCCESS_CODE, null, list);
     }
+
+
 }

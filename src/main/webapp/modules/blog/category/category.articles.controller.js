@@ -1,11 +1,13 @@
+app.controller("CategoryArticleController",function ($scope,$routeParams,CategoryService) {
+    console.log("CategoryArticleController--");
 
-app.controller("CategoryArticleController",function ($scope,$routeParams,ArchiveService) {
-
-    $scope.getCategoryArticles=function (name) {
-        ArchiveService.getArticles(code).then(function (data) {
+    $scope.getCategoryArticles=function (code) {
+        CategoryService.getArticles(code).then(function (data) {
             console.log(data);
             $scope.categoryArticles = data.resultData;
         });
     }
-    $scope.getCategoryArticles($routeParams.code)
+    console.log("CategoryArticleController--"+$routeParams.categoryCode);
+
+    $scope.getCategoryArticles($routeParams.categoryCode)
 })

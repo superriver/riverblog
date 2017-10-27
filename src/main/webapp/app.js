@@ -11,7 +11,6 @@ var app = angular.module("webApp", ["ngRoute",
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider.when("/",
         {
-
             templateUrl: "modules/index/index.view.html",
             controller: 'IndexController'
         }
@@ -32,6 +31,14 @@ app.config(function ($routeProvider, $locationProvider) {
     when("/blog/archive/:archiveName",{
         templateUrl : "modules/blog/archive/archive.articles.view.html",
         controller:'ArchiveArticleController'
+    }).
+    when("/blog/category",{
+        templateUrl : "modules/blog/category/category.list.view.html",
+        controller:'CategoryController'
+    }).
+    when("/blog/category/:categoryCode",{
+        templateUrl:"modules/blog/category/category.articles.view.html",
+        controller:'CategoryArticleController'
     });
 
     $locationProvider.hashPrefix('!');

@@ -1,11 +1,13 @@
 package studio.river.pojo;
 
-/**
- * Created by Administrator on 2017-10-22.
- */
 public class Category {
     private Integer id;
+
+    private String description;
+
     private String name;
+
+    private Boolean status;
 
     private String code;
 
@@ -17,12 +19,28 @@ public class Category {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public String getCode() {
@@ -30,6 +48,6 @@ public class Category {
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.code = code == null ? null : code.trim();
     }
 }

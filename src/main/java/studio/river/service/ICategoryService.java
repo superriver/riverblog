@@ -1,5 +1,6 @@
 package studio.river.service;
 
+import studio.river.pojo.Article;
 import studio.river.pojo.Category;
 
 import java.util.List;
@@ -13,4 +14,11 @@ public interface ICategoryService {
      * @return
      */
     List<Category> getAllCategory();
+    /**
+     *
+     */
+
+
 }
+
+

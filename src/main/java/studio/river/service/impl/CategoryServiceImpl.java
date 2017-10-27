@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements ICategoryService{
     @Autowired
-    ICategoryDao iCategoryDao;
+    private ICategoryDao iCategoryDao;
     @Override
     public List<Category> getAllCategory() {
-        return null;
+        return iCategoryDao.getAllCategory();
     }
 }

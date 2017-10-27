@@ -43,6 +43,7 @@ public class ArticleServiceImpl implements IArticleService {
     @Override
     public Map<String, Object> getArticleVoByCode(String code) {
         ArticleVo article = iArticleDao.getByVoCode(code);
+        System.out.println("getCategoryName---------" + article.getCategoryName());
         Map<String, Object> map = new HashMap<>();
         Article preArticle = iArticleDao.selectNextOrPreVoBy(article,false);
         Article nextArticle = iArticleDao.selectNextOrPreVoBy(article,true);
@@ -59,7 +60,12 @@ public class ArticleServiceImpl implements IArticleService {
 
     @Override
     public List<Article> getArchiveArticles(String name) {
-        List<Article> list = iArticleDao.selectArchiveArticles(name);
-        return list;
+        return  iArticleDao.selectArchiveArticles(name);
     }
+
+    @Override
+    public List<Article> getAllByCategoryCode(String code) {
+        return iArticleDao.getCategoryArticles(code);
+    }
+
 }

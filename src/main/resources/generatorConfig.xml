@@ -11,7 +11,7 @@
     
     
     <!--添加你本地的驱动jar-->
-    <classPathEntry location="D:\Java\maven\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+    <classPathEntry location="E:\river\web\local\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
     
     <context id="context" targetRuntime="MyBatis3">
 
@@ -50,8 +50,8 @@
 
         <!--要根据哪张表生成，要在这里配置-->
         <!--用百分号表示生成所有表,可以直接省去一个一个写 <table tableName="%" /> -->
-        <table tableName="t_article"  domainObjectName="Article" selectByExampleQueryId="false" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
-        
+        <table tableName="t_category"  domainObjectName="Category" selectByExampleQueryId="false" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+
         
     </context>
 </generatorConfiguration>
