@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../plugins/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../plugins/angularjs/angular.min.js"></script>
+    <script src="../../plugins/angularjs-extend-lib/angular-route.min.js"></script>
+</head>
+<body ng-app="">
+<div>
+    <div class="project-body">
+        <div>
+            <div class="body-project-body">
+                <div class="row" style="background-color: #fff;border-bottom: 1px solid #DDDDDD;"
+                ng-repeat="project in projects">
+
+                    <div class="col-xs-3 col-md-2 col-sm-3 col-lg-2">
+                        <p>{{project.pubTime}}</p>
+                    </div>
+                    <div class="col-md-10 col-xs-9 col-sm-9 col-lg-10" style="border-left: 1px solid #DDDDDD">
+                        <h1>{{project.name}}</h1>
+                        <p>{{project.introduction}}</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

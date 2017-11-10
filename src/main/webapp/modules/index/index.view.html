@@ -10,10 +10,11 @@
                                  <a href="#!/recent">近期文章</a>
                         </span>
                     </div>
-                    <div style="text-indent: 30px;margin-top: 10px;line-height: 30px;font-family: '微软雅黑';font-size: 15px;">
-                        <ul>
-                            <li ng-repeat="x in datas">
-                                <a href="">{{x.title}}</a>
+                    <div style="text-indent: 10px;margin-top: 10px;line-height: 30px;font-family: '微软雅黑';font-size: 15px;">
+                        <ul style="list-style: none">
+                            <li ng-repeat="article in articles">
+                                <a href="#!/blog/article/{{article.code}}">{{article.title}}</a>
+                                <span style="padding-left: 20px">发布时间:{{article.pubTime| date :'yyyy-MM-dd HH:ss'}}</span>
                             </li>
                         </ul>
                     </div>
