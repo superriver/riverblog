@@ -13,20 +13,20 @@
 <div>
     <div class="project-body">
         <div>
-            <div class="body-project-body">
-                <div class="row" style="background-color: #fff;border-bottom: 1px solid #DDDDDD;"
+                <div class="body-project-body" style="overflow-x: hidden ;padding: 0;   margin: 0px 10px;">
+
+                    <div class="row" style="background-color: #fff;border-bottom: 1px solid #DDDDDD;"
                 ng-repeat="project in projects">
 
-                    <div class="col-xs-3 col-md-2 col-sm-3 col-lg-2">
-                        <p>{{project.pubTime}}</p>
+                    <div class="col-xs-3 col-md-2 col-sm-3 col-lg-2" style="text-align:match-parent ">
+                        <p>{{project.pubTime|date:'yyyy-MM'}}</p>
                     </div>
                     <div class="col-md-10 col-xs-9 col-sm-9 col-lg-10" style="border-left: 1px solid #DDDDDD">
                         <h1>{{project.name}}</h1>
                         <p>{{project.introduction}}</p>
-                        <p></p>
                     </div>
                 </div>
-            </div>
+               </div>
         </div>
     </div>
 </div>

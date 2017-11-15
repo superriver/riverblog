@@ -39,6 +39,10 @@ app.config(function ($routeProvider, $locationProvider) {
     when("/blog/category/:categoryCode",{
         templateUrl:"modules/blog/category/category.articles.view.html",
         controller:'CategoryArticleController'
+    }).
+    when("/project/",{
+        templateUrl:"modules/project/project.view.html",
+        controller:"ProjectController"
     });
 
     $locationProvider.hashPrefix('!');

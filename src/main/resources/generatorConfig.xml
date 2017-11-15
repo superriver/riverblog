@@ -11,8 +11,9 @@
     
     
     <!--添加你本地的驱动jar-->
-    <classPathEntry location="E:\river\web\local\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
-    
+    <!--<classPathEntry location="E:\river\web\local\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>-->
+    <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
+
     <context id="context" targetRuntime="MyBatis3">
 
         <!--设置编码格式-->

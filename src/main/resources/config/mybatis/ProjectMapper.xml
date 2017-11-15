@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="studio.river.dao.IProjectDao" >
+  <resultMap id="BaseResultMap" type="studio.river.pojo.Project" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="article_url" property="articleUrl" jdbcType="VARCHAR" />
+    <result column="down_url" property="downUrl" jdbcType="VARCHAR" />
+    <result column="hits" property="hits" jdbcType="INTEGER" />
+    <result column="pub_time" property="pubTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <select id="getAllProjectList" resultMap="BaseResultMap">
+    SELECT * FROM t_project ORDER BY pub_time DESC ;
+  </select>
+
+  <sql id="Base_Column_List" >
+    id, name, introduction, article_url, down_url, hits, pub_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="studio.river.pojo.Project" >
+    insert into t_project (id, name, introduction, 
+      article_url, down_url, hits, 
+      pub_time, status)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{articleUrl,jdbcType=VARCHAR}, #{downUrl,jdbcType=VARCHAR}, #{hits,jdbcType=INTEGER}, 
+      #{pubTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="studio.river.pojo.Project" >
+    insert into t_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="articleUrl != null" >
+        article_url,
+      </if>
+      <if test="downUrl != null" >
+        down_url,
+      </if>
+      <if test="hits != null" >
+        hits,
+      </if>
+      <if test="pubTime != null" >
+        pub_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUrl != null" >
+        #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downUrl != null" >
+        #{downUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="pubTime != null" >
+        #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="studio.river.pojo.Project" >
+    update t_project
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUrl != null" >
+        article_url = #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="downUrl != null" >
+        down_url = #{downUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        hits = #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="pubTime != null" >
+        pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="studio.river.pojo.Project" >
+    update t_project
+    set name = #{name,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      down_url = #{downUrl,jdbcType=VARCHAR},
+      hits = #{hits,jdbcType=INTEGER},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
